@@ -99,8 +99,9 @@ The server will start at `http://127.0.0.1:8000/`
    - URL: `http://127.0.0.1:8000/api/auth/profile/`
    - Headers:
      ```
-     Authorization: Bearer <your_access_token>
+     Authorization: Bearer your_access_token 
      ```
+      Note: Ensure one single space between Bearer and your_access_token. Don't use another symbols or others.
 
 4. **Create an Employer**
    - Method: `POST`
@@ -113,11 +114,11 @@ The server will start at `http://127.0.0.1:8000/`
    - Body (raw JSON):
      ```json
      {
-         "company_name": "Example Corp",
-         "contact_person_name": "John Doe",
-         "email": "contact@example.com",
-         "phone_number": "1234567890",
-         "address": "123 Main St"
+      "company_name": "Example Corp",
+      "contact_person_name": "John Doe",
+      "email": "contact@example.com",
+      "phone_number": "1234567890",
+      "address": "123 Main St"
      }
      ```
 
