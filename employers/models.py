@@ -6,8 +6,7 @@ class Employer(models.Model):
     Represents an Employer in the system.
     Each employer is linked to a specific user.
     """
-    # The user who owns or created this employer entry.
-    # A User can have multiple Employer entries.
+    
     # If a User is deleted, their associated Employer entries will also be deleted (CASCADE).
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, 
@@ -21,7 +20,6 @@ class Employer(models.Model):
     phone_number = models.CharField(max_length=20, unique=True) # Max length can be adjusted as needed
     address = models.TextField()
     
-    # Timestamps
     created_at = models.DateTimeField(auto_now_add=True) # Automatically set when the object is first created
     updated_at = models.DateTimeField(auto_now=True) # Automatically set every time the object is saved
 

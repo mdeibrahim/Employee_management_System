@@ -2,9 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from .managers import CustomUserManager # Import the manager
-# Create your models here.
-
+from .managers import CustomUserManager
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(('email address'), unique=True)
@@ -12,13 +10,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
 
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True) # Set to True by default, can be False for email verification
+    is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
 
-    USERNAME_FIELD = 'email' # Use email for login [cite: 5]
-    REQUIRED_FIELDS = [] # No other fields required besides email and password by default
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
 
-    objects = CustomUserManager() # Attach the custom manager
+    objects = CustomUserManager() # Add the custom manager
 
     def __str__(self):
         return self.email
