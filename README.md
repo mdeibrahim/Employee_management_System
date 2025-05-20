@@ -1,24 +1,11 @@
 # Employee Management System
 
-A Django REST API for managing employees and employers with JWT authentication.
-
-## Features
-
-- Custom user authentication with JWT tokens
-- CRUD operations for employers
-- Secure endpoints with proper permissions
-- Email-based authentication
-
-## Prerequisites
-
-- Python 3.8 or higher
-- pip (Python package installer)
 
 ## Local Development Setup
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone <https://github.com/mdeibrahim/Employee_management_System.git>
 cd employee-management-system
 ```
 
@@ -73,29 +60,126 @@ The server will start at `http://127.0.0.1:8000/`
 
 ## Testing the API
 
-You can use tools like Postman or curl to test the API endpoints. Here's an example using curl:
+### Using Postman
 
-1. Register a new user:
-```bash
-curl -X POST http://127.0.0.1:8000/api/auth/signup/ \
-  -H "Content-Type: application/json" \
-  -d '{"email": "user@example.com", "password": "yourpassword", "password2": "yourpassword"}'
-```
+1. **Register a new user**
+   - Method: `POST`
+   - URL: `http://127.0.0.1:8000/api/auth/signup/`
+   - Headers: 
+     ```
+     Content-Type: application/json
+     ```
+   - Body (raw JSON):
+     ```json
+     {
+         "email": "user@example.com",
+         "password": "yourpassword",
+         "password2": "yourpassword"
+     }
+     ```
 
-2. Login to get JWT tokens:
-```bash
-curl -X POST http://127.0.0.1:8000/api/auth/login/ \
-  -H "Content-Type: application/json" \
-  -d '{"email": "user@example.com", "password": "yourpassword"}'
-```
+2. **Login to get JWT tokens**
+   - Method: `POST`
+   - URL: `http://127.0.0.1:8000/api/auth/login/`
+   - Headers:
+     ```
+     Content-Type: application/json
+     ```
+   - Body (raw JSON):
+     ```json
+     {
+         "email": "user@example.com",
+         "password": "yourpassword"
+     }
+     ```
+   - Save the `access` token from the response for subsequent requests
 
-3. Create an employer (using the access token from login):
-```bash
-curl -X POST http://127.0.0.1:8000/api/employers/ \
-  -H "Authorization: Bearer <your_access_token>" \
-  -H "Content-Type: application/json" \
-  -d '{"company_name": "Example Corp", "contact_person_name": "John Doe", "email": "contact@example.com", "phone_number": "1234567890", "address": "123 Main St"}'
-```
+3. **Get User Profile**
+   - Method: `GET`
+   - URL: `http://127.0.0.1:8000/api/auth/profile/`
+   - Headers:
+     ```
+     Authorization: Bearer <your_access_token>
+     ```
+
+4. **Create an Employer**
+   - Method: `POST`
+   - URL: `http://127.0.0.1:8000/api/employers/`
+   - Headers:
+     ```
+     Authorization: Bearer <your_access_token>
+     Content-Type: application/json
+     ```
+   - Body (raw JSON):
+     ```json
+     {
+         "company_name": "Example Corp",
+         "contact_person_name": "John Doe",
+         "email": "contact@example.com",
+         "phone_number": "1234567890",
+         "address": "123 Main St"
+     }
+     ```
+
+5. **List All Employers**
+   - Method: `GET`
+   - URL: `http://127.0.0.1:8000/api/employers/`
+   - Headers:
+     ```
+     Authorization: Bearer <your_access_token>
+     ```
+
+6. **Get Specific Employer**
+   - Method: `GET`
+   - URL: `http://127.0.0.1:8000/api/employers/<id>/`
+   - Headers:
+     ```
+     Authorization: Bearer <your_access_token>
+     ```
+
+7. **Update Employer**
+   - Method: `PUT`
+   - URL: `http://127.0.0.1:8000/api/employers/<id>/`
+   - Headers:
+     ```
+     Authorization: Bearer <your_access_token>
+     Content-Type: application/json
+     ```
+   - Body (raw JSON):
+     ```json
+     {
+         "company_name": "Updated Corp",
+         "contact_person_name": "Jane Doe",
+         "email": "updated@example.com",
+         "phone_number": "0987654321",
+         "address": "456 New St"
+     }
+     ```
+
+8. **Delete Employer**
+   - Method: `DELETE`
+   - URL: `http://127.0.0.1:8000/api/employers/<id>/`
+   - Headers:
+     ```
+     Authorization: Bearer <your_access_token>
+     ```
+
+9. **Logout**
+   - Method: `POST`
+   - URL: `http://127.0.0.1:8000/api/auth/logout/`
+   - Headers:
+     ```
+     Authorization: Bearer <your_access_token>
+     Content-Type: application/json
+     ```
+   - Body (raw JSON):
+     ```json
+     {
+         "refresh": "<your_refresh_token>"
+     }
+     ```
+
+
 
 ## Environment Variables
 
@@ -109,11 +193,7 @@ SECRET_KEY=your-secret-key
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create your feature branch 
+3. Commit your changes 
+4. Push to the branch 
 5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
