@@ -26,6 +26,7 @@ db.sqlite3
 db.sqlite3-journal
 media/
 staticfiles/
+static/
 
 # Virtual Environment
 employee_management_env/
@@ -44,6 +45,8 @@ venv.bak/
 *.swo
 .DS_Store
 Thumbs.db
+*.sublime-workspace
+*.sublime-project
 
 # Coverage reports
 htmlcov/
@@ -77,11 +80,15 @@ yarn-error.log*
 .env
 .env.local
 .env.*.local
+.env.development
+.env.test
+.env.production
 
 # Database backups
 *.dump
 *.sql
 *.sqlite3
+*.sqlite3-journal
 
 # Logs
 logs/
@@ -91,4 +98,23 @@ yarn-debug.log*
 yarn-error.log*
 
 # Local development settings
-local_settings.py 
+local_settings.py
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Project specific
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.dylib
+*.dll 
