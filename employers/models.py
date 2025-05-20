@@ -17,8 +17,8 @@ class Employer(models.Model):
     
     company_name = models.CharField(max_length=255)
     contact_person_name = models.CharField(max_length=255)
-    email = models.EmailField(max_length=254) # Standard email field
-    phone_number = models.CharField(max_length=20) # Max length can be adjusted as needed
+    email = models.EmailField(max_length=254, unique=True) # Standard email field
+    phone_number = models.CharField(max_length=20, unique=True) # Max length can be adjusted as needed
     address = models.TextField()
     
     # Timestamps
