@@ -17,6 +17,8 @@ from .serializers import (
 User = get_user_model()
 
 class UserRegistrationView(generics.CreateAPIView):
+    # CREATE: POST /api/employers/
+    # READ: GET /api/employers/
     serializer_class = UserRegistrationSerializer
     permission_classes = [permissions.AllowAny] # Anyone can register
 

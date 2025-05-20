@@ -37,7 +37,7 @@ class EmployerListCreateView(generics.ListCreateAPIView):
 class EmployerDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
     API view to retrieve, update, or delete a specific employer instance.
-    - GET: Retrieve a specific employer.
+    - GET: read_Retrieve a specific employer.
     - PUT: Update a specific employer.
     - DELETE: Delete a specific employer.
     """
